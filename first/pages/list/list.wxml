@@ -1,0 +1,23 @@
+<!--pages/list/list.wxml-->
+<view class='container'>
+  <view class='widget'>
+    <text class='column'>ID</text>
+    <text class='column'>NAME</text>
+    <text class='column'>PRIORITY</text>
+    <text class='link-column'>MODIFY</text>
+  </view>
+  <scroll-view scroll-y='true'>
+    <view>
+      <block wx:for='{{list}}'>
+        <text class='column'>{{item.areaId}}</text>
+        <text class='column'>{{item.areaName}}</text>
+        <text class='column'>{{item.priority}}</text>
+        <text class='link-column'>
+          <navigator class='link' url='../operation/operation?areaId={{item.areaId}}'>edit</navigator>
+          <text class='link' bindtap='deleteArea' data-areaid='{{item.areaId}}' data-areaname='{{item.areaName}}' data-index='{{index}}'>delete</text>
+        </text>
+      </block>
+    </view>
+  </scroll-view>
+  <button type='primary' bindtap='addArea'>add area</button>
+</view>
